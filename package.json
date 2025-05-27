@@ -1,0 +1,37 @@
+{
+  "name": "excel-generator-node",
+  "version": "1.0.0",
+  "description": "Servicio Node.js para generar archivos Excel basados en datos de proyecto.",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "excel",
+    "generator",
+    "nodejs",
+    "express"
+  ],
+  "author": "Tu Nombre/Empresa Aquí",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.3.0",
+    "express": "^4.19.2",
+    "sharp": "^0.33.4",
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "nodemon": "^3.1.0"
+  }
+}
