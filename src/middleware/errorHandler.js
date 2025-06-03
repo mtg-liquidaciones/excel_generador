@@ -1,17 +1,7 @@
 // src/middleware/errorHandler.js
 
-// import logger from '../utils/logger.js'; // Asumiremos que tendrás un logger configurado
-// import config from '../config/index.js'; // Para acceder a process.env.NODE_ENV
-
-// Placeholder logger - reemplaza con tu instancia de logger real
-const logger = {
-  error: (message, errorDetails) => {
-    console.error(`[ERROR-HANDLER] ${message}`, errorDetails ? JSON.stringify(errorDetails, null, 2) : '');
-    if (errorDetails && errorDetails.stack && (process.env.NODE_ENV === 'development' || !(errorDetails.isOperational))) {
-      console.error(errorDetails.stack);
-    }
-  },
-};
+import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
+import config from '../config/index.js'; // Para acceder a process.env.NODE_ENV
 
 // El NODE_ENV se establece fuera de la aplicación (ej. al iniciar el script: NODE_ENV=production node app.js)
 // o a través de un archivo .env cargado muy temprano.
@@ -33,7 +23,7 @@ function errorHandler(err, req, res, next) {
     name: err.name,
     statusCode: err.statusCode,
     isOperational: err.isOperational,
-    // stack: err.stack, // El logger placeholder ya maneja el stack
+    stack: err.stack, // Ahora que usamos winston, podemos pasar el stack directamente
     // Puedes añadir más propiedades del error si son relevantes
   });
 

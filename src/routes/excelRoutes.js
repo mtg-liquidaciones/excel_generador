@@ -2,17 +2,9 @@
 
 import express from 'express';
 import fs from 'fs/promises';
-// import path from 'path'; // path no se usa directamente aquí, pero es bueno tenerlo si se expande
 import { generateFullExcelForPath } from '../services/excelProcessingService.js';
 import config from '../config/index.js';
-// import logger from '../utils/logger.js';
-
-// Placeholder logger
-const logger = {
-  info: (message) => console.log(`[INFO] excelRoutes: ${message}`),
-  warn: (message) => console.warn(`[WARN] excelRoutes: ${message}`),
-  error: (message, error) => console.error(`[ERROR] excelRoutes: ${message}`, error || ''),
-};
+import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
 
 const router = express.Router();
 
@@ -33,7 +25,6 @@ class TimeoutError extends Error {
  * @param {string} operationName - Name of the operation for logging.
  * @returns {Promise<any>} - The result of the original promise or throws TimeoutError.
  */
-// 👇 CORRECCIÓN AQUÍ: Añadido espacio después de 'function'
 function asyncOperationWithTimeout(promise, timeoutMs, operationName = "Async Operation") {
   let timeoutHandle;
   const timeoutPromise = new Promise((_, reject) => {

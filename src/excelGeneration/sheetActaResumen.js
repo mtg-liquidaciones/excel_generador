@@ -6,17 +6,7 @@ import {
   applyOuterBorder,
   insertResizedImage
 } from './excelUtils.js';
-
-// Placeholder logger
-const logger = {
-  info: (message) => console.log(`[INFO] sheetActaResumen: ${message}`),
-  warn: (message) => console.warn(`[WARN] sheetActaResumen: ${message}`),
-  error: (message, errorDetails) => {
-    const detailsString = errorDetails && typeof errorDetails === 'object' ? JSON.stringify(errorDetails) : errorDetails || '';
-    console.error(`[ERROR] sheetActaResumen: ${message}`, detailsString);
-  },
-  debug: (message) => console.log(`[DEBUG] sheetActaResumen: ${message}`),
-};
+import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
 
 // --- Constantes de Diseño y Datos Específicas para Acta Resumen Pext ---
 const PIXEL_TO_CHAR_FACTOR_COL_WIDTH = 7.0;
@@ -65,7 +55,7 @@ const checklistLayout = [
     { row: 27, dText: "Cable amarrado a soportes en camara", oText: "Fusiones correctamente realizadas y ordenadas", dHasCheck: true, oHasCheck: true },
     { row: 29, dText: "Reservas ( 2 vueltas en interior de camara)", oText: "Uso correcto de código colores", dHasCheck: true, oHasCheck: true },
     { row: 31, dText: "Limpieza de camara ( residuos)", oText: "Terminación correcta del Keplar", dHasCheck: true, oHasCheck: true },
-    
+
     { row: 33, dText: "Tendido Aereo", dFontKey: "fontArial11Bold", dMerge: 'D33:H33', dHasCheck: false, oText: "Pruebas de FO y archivo en digital", oFontKey: "fontArial10", oMerge: 'O33:R33', oHasCheck: true },
     { row: 35, dText: "Tendidos correctamente ordenado", oText: "Identificacion cable FO Origen-Destino en Mufa FO", dHasCheck: true, oHasCheck: true },
     { row: 37, dText: "Placas de identificación (pdte)", oText: "Otros Trabajos", oFontKey: "fontArial11Bold", dHasCheck: true, oHasCheck: false }, // Corregido oHasCheck a false según tu indicación
@@ -81,7 +71,7 @@ const checklistLayout = [
     { row: 55, dText: "Rack instalados", oText: "Diseño", oFontKey: "fontArial11Bold", dHasCheck: true, oHasCheck: false }, // Corregido oHasCheck a false según tu indicación
     { row: 57, dText: "Ordenadores horizontales", oText: "Diseño de acuerdo a lo Solicitado", dHasCheck: true, oHasCheck: true },
     { row: 59, dText: "Ordenadores verticales", oText: "Cumple con la Norma de Dibujo GTD Wigo", dHasCheck: true, oHasCheck: true },
-    { row: 61, dText: "", dHasCheck: false, oText: "Entrega Cartas Ingresos en entidades del Estado", oFontKey: "fontArial10", oMerge: 'O61:R61', oHasCheck: true } 
+    { row: 61, dText: "", dHasCheck: false, oText: "Entrega Cartas Ingresos en entidades del Estado", oFontKey: "fontArial10", oMerge: 'O61:R61', oHasCheck: true }
   ];
 
 /**
@@ -163,8 +153,8 @@ async function createSheetActaResumen(sheet, generalData, logoPath) {
   applyCellStyles(sheet.getCell('U21'), { value: "No", font: definedFonts.fontArial10Bold, alignment: COMMON_ALIGNMENTS.center_center_wrap });
   applyCellStyles(sheet.getCell('W21'), { value: "NA", font: definedFonts.fontArial10Bold, alignment: COMMON_ALIGNMENTS.center_center_wrap });
 
-  const checkboxBorder = { 
-    top: mediumOuterBorderSide, left: mediumOuterBorderSide, bottom: mediumOuterBorderSide, right: mediumOuterBorderSide 
+  const checkboxBorder = {
+    top: mediumOuterBorderSide, left: mediumOuterBorderSide, bottom: mediumOuterBorderSide, right: mediumOuterBorderSide
   };
 
   checklistLayout.forEach(item => {
@@ -207,9 +197,9 @@ async function createSheetActaResumen(sheet, generalData, logoPath) {
       });
     }
   });
-  
+
   applyCellStyles(sheet.getCell('D65'), { value: "Nombre Supervisor Contratista", font: definedFonts.fontArial11Bold });
-  sheet.mergeCells('H65:P65'); sheet.getCell('H65').border = mediumBottomBorder; 
+  sheet.mergeCells('H65:P65'); sheet.getCell('H65').border = mediumBottomBorder;
   applyCellStyles(sheet.getCell('Q65'), { value: "Firma", font: definedFonts.fontArial11Bold, alignment: COMMON_ALIGNMENTS.right_center_no_wrap });
   sheet.mergeCells('R65:U65'); sheet.getCell('R65').border = mediumBottomBorder;
 

@@ -1,7 +1,7 @@
 // src/app.js
 
 // 1. Cargar variables de entorno (lo antes posible)
-import dotenv from 'dotenv'; // <--- ASEGURADO QUE ESTÁ SOLO UNA VEZ
+import dotenv from 'dotenv';
 dotenv.config(); // Carga variables desde el archivo .env
 
 // 2. Importar dependencias principales
@@ -12,14 +12,7 @@ import config from './config/index.js';
 import excelRoutes from './routes/excelRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
 import { ensureDirectoryExists } from './utils/fileSystemUtils.js';
-// import logger from './utils/logger.js'; // Asumimos que crearás este módulo
-
-// Placeholder logger - Reemplázalo con la importación de tu logger configurado
-const logger = {
-  info: (message) => console.log(`[INFO] App: ${message}`),
-  error: (message, error) => console.error(`[ERROR] App: ${message}`, error || ''),
-  debug: (message) => console.log(`[DEBUG] App: ${message}`),
-};
+import logger from './utils/logger.js'; // <--- Importamos el logger real aquí
 
 // Obtener __dirname en ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -29,7 +22,6 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 // 4. Asegurar que el directorio de logs exista
-// (Deberás crear src/utils/logger.js que use loggingConfig para la ruta completa)
 ensureDirectoryExists(path.join(process.cwd(), config.logging.directory))
   .then(() => logger.info(`Directorio de logs asegurado: ${config.logging.directory}`))
   .catch(error => logger.error(`No se pudo asegurar el directorio de logs: ${error.message}`, error));
@@ -99,4 +91,4 @@ process.on('uncaughtException', (error) => {
   process.exit(1);
 });
 
-export default app; // Útil para pruebas o si se usa con serverless/otros frameworks
+export default app;

@@ -3,14 +3,8 @@
 import sharp from 'sharp'; // Para redimensionar imágenes
 import fs from 'fs/promises';
 import path from 'path'; // Útil para extensiones de archivo, etc.
-
-// Placeholder logger - Reemplázalo con tu logger configurado (ej. import logger from '../utils/logger.js';)
-const logger = {
-  info: (message) => console.log(`[INFO] excelUtils: ${message}`),
-  warn: (message) => console.warn(`[WARN] excelUtils: ${message}`),
-  error: (message, error) => console.error(`[ERROR] excelUtils: ${message}`, error || ''),
-  debug: (message) => console.log(`[DEBUG] excelUtils: ${message}`),
-};
+import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
+import config from '../config/index.js'; // Importamos la configuración para acceder a PHOTO_CONFIG
 
 /**
  * Convierte un número de columna (1-indexed) a su letra correspondiente (A, B, ..., Z, AA, etc.).
@@ -130,31 +124,48 @@ function applyCellStyles(cell, styles = {}) {
  * @param {string} cellAnchor - Celda donde anclar la esquina superior izquierda de la imagen (ej. "A1").
  * @param {number} targetPixelWidth - Ancho deseado en píxeles.
  * @param {number} targetPixelHeight - Alto deseado en píxeles.
- * @param {boolean} [maintainAspectRatio=true] - Si se debe mantener la relación de aspecto.
+ * @param {boolean} [maintainAspectRatio=false] - Si se debe mantener la relación de aspecto.
  */
-async function insertResizedImage(sheet, imagePath, cellAnchor, targetPixelWidth, targetPixelHeight, maintainAspectRatio = true) {
+async function insertResizedImage(sheet, imagePath, cellAnchor, targetPixelWidth, targetPixelHeight, maintainAspectRatio = false) {
   try {
     await fs.access(imagePath);
     const imageBuffer = await fs.readFile(imagePath);
     const image = sharp(imageBuffer);
     const metadata = await image.metadata();
 
-    let newWidth = Math.max(1, Math.trunc(targetPixelWidth));
-    let newHeight = Math.max(1, Math.trunc(targetPixelHeight));
+    let newWidth = Math.max(1, Math.round(targetPixelWidth));
+    let newHeight = Math.max(1, Math.round(targetPixelHeight));
 
-    if (maintainAspectRatio && metadata.width && metadata.height) {
-      const ratio = Math.min(newWidth / metadata.width, newHeight / metadata.height);
-      newWidth = Math.max(1, Math.trunc(metadata.width * ratio));
-      newHeight = Math.max(1, Math.trunc(metadata.height * ratio));
+    // Si maintainAspectRatio es true (ej. para logos), calcula nuevas dimensiones manteniendo el aspecto.
+    // Si es false (como para las fotos de conformidad), usa las dimensiones targetPixelWidth y targetPixelHeight directamente
+    // y fuerza el ajuste 'fill' para que la imagen complete el espacio sin recortar.
+    let sharpResizeOptions = {
+        width: newWidth,
+        height: newHeight,
+    };
+
+    if (maintainAspectRatio) {
+        // Para el logo, queremos que se ajuste sin distorsionarse, manteniendo el aspecto.
+        // El 'contain' intentará encajar la imagen dentro de las dimensiones dadas.
+        sharpResizeOptions.fit = sharp.fit.contain;
+        // Si el objetivo es un ajuste con aspecto para un logo, podemos permitir que sharp
+        // recalcule el ancho/alto final para asegurar el aspecto dentro de las dimensiones.
+        // Aquí no estamos usando metadata.width/height para el cálculo inicial si maintainAspectRatio es true
+        // sino para la proporción. sharp.fit.contain lo maneja.
+        logger.debug(`Redimensionando imagen con aspecto (fit: contain): Original ${metadata.width}x${metadata.height}, Target ${targetPixelWidth}x${targetPixelHeight}, Nuevo ${newWidth}x${newHeight}`);
+    } else {
+        // Para las fotos de conformidad, queremos que la imagen llene exactamente el espacio,
+        // distorsionándose si es necesario para ajustarse a las dimensiones exactas.
+        sharpResizeOptions.fit = sharp.fit.fill;
+        logger.debug(`Redimensionando imagen sin mantener aspecto (fit: fill): Target ${newWidth}x${newHeight}`);
     }
 
-    // Determinar la extensión para la conversión, PNG es una buena opción por defecto.
-    const outputExtension = (metadata.format === 'jpeg' || metadata.format === 'jpg') ? 'jpeg' : 'png';
-    const resizedImageBuffer = await image.resize(newWidth, newHeight)[outputExtension]().toBuffer();
+    const outputFormat = (metadata.format === 'jpeg' || metadata.format === 'jpg') ? 'jpeg' : 'png';
+    const resizedImageBuffer = await image.resize(sharpResizeOptions)[outputFormat]().toBuffer();
 
     const imageId = sheet.workbook.addImage({
       buffer: resizedImageBuffer,
-      extension: outputExtension,
+      extension: outputFormat,
     });
 
     const anchorPos = parseCellRef(cellAnchor); // .colNum y .row son 1-indexados
@@ -163,7 +174,7 @@ async function insertResizedImage(sheet, imagePath, cellAnchor, targetPixelWidth
       tl: { col: anchorPos.colNum - 1, row: anchorPos.row - 1 },
       ext: { width: newWidth, height: newHeight },
     });
-    logger.debug(`Imagen ${imagePath} insertada en ${cellAnchor} con dimensiones ${newWidth}x${newHeight}`);
+    logger.debug(`Imagen ${imagePath} insertada en ${cellAnchor} con dimensiones finales ${newWidth}x${newHeight}`);
   } catch (error) {
     logger.error(`Error al procesar/insertar imagen '${imagePath}' en '${cellAnchor}': ${error.message}`, error);
   }
@@ -195,7 +206,7 @@ function applyOuterBorder(sheet, rangeString, borderSideStyle) {
           if (r === end.row) newBorder.bottom = { ...currentBorder.bottom, ...borderSideStyle };
           if (c === start.colNum) newBorder.left = { ...currentBorder.left, ...borderSideStyle };
           if (c === end.colNum) newBorder.right = { ...currentBorder.right, ...borderSideStyle };
-          
+
           // Asegurar que no se apliquen lados vacíos si no estaban definidos y borderSideStyle no los cubre
           Object.keys(newBorder).forEach(key => {
             if (newBorder[key] && Object.keys(newBorder[key]).length === 0) {

@@ -2,15 +2,7 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-// import logger from './logger.js'; // Assuming a logger utility
-
-// Placeholder logger - replace with actual logger import
-const logger = {
-  info: (message) => console.log(`[INFO] fileSystemUtils: ${message}`),
-  warn: (message) => console.warn(`[WARN] fileSystemUtils: ${message}`),
-  error: (message, error) => console.error(`[ERROR] fileSystemUtils: ${message}`, error || ''),
-  debug: (message) => console.log(`[DEBUG] fileSystemUtils: ${message}`),
-};
+import logger from './logger.js'; // <--- Importamos el logger real aquí
 
 /**
  * Ensures that a directory exists. If it doesn't, it creates it.

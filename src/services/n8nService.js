@@ -2,14 +2,7 @@
 
 import axios from 'axios';
 import config from '../config/index.js'; // Importa la configuración principal
-// import logger from '../utils/logger.js'; // Asumiremos que tendrás un logger_configurado
-
-// Placeholder logger - reemplaza con tu instancia de logger real
-const logger = {
-  info: (message) => console.log(`[INFO] N8NService: ${message}`),
-  warn: (message) => console.warn(`[WARN] N8NService: ${message}`),
-  error: (message, error) => console.error(`[ERROR] N8NService: ${message}`, error || ''),
-};
+import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
 
 /**
  * Envía los comentarios a un webhook de N8N para su procesamiento/corrección.

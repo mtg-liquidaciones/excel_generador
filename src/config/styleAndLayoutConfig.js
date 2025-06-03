@@ -2,7 +2,7 @@
 
 // NOTA: Las rutas absolutas como RUTA_LOGO_GTD podrían ser mejor manejadas
 // a través de variables de entorno o haciéndolas relativas al proyecto.
-const RUTA_LOGO_GTD = process.env.RUTA_LOGO_GTD || "C:/Users/MAOC/Desktop/generador excel/logogtd.png";
+const RUTA_LOGO_GTD = process.env.RUTA_LOGO_GTD || "C:/Users/MAOC/Desktop/logogtd.png";
 
 const NOMBRE_ARCHIVO_DATOS_PRINCIPAL = "datos.json";
 const NOMBRE_ARCHIVO_COMENTARIOS = "comentarios.json";
@@ -27,13 +27,14 @@ const MAIN_JSON_CELL_MAP_CONFORMIDAD = {
 
 // --- CONFIGURACIÓN DE FOTOS ---
 const PHOTO_CONFIG = {
-  TARGET_HEIGHT_CM: 9.94,
-  TARGET_WIDTH_CM: 11.81,
+  TARGET_HEIGHT_CM: 9.9, // Altura deseada en CM
+  TARGET_WIDTH_CM: 11.85, // Ancho deseado en CM
   // Factor de conversión de CM a Píxeles (asumiendo 96 DPI, estándar en muchas pantallas)
+  // 1 pulgada = 2.54 cm. Si 96 DPI (píxeles por pulgada), entonces (96 / 2.54) píxeles por cm.
   CM_TO_PIXELS_FACTOR: (96 / 2.54),
-  // Dimensiones en píxeles calculadas como en el script de Python (usando truncamiento)
-  PHOTO_PIXEL_HEIGHT: Math.trunc(9.94 * (96 / 2.54)), // Da 375
-  PHOTO_PIXEL_WIDTH: Math.trunc(11.81 * (96 / 2.54)), // Da 446
+  // Dimensiones en píxeles calculadas a partir de los CM exactos
+  PHOTO_PIXEL_HEIGHT: Math.round(9.9 * (96 / 2.54)), // Altura en píxeles
+  PHOTO_PIXEL_WIDTH: Math.round(11.85 * (96 / 2.54)), // Ancho en píxeles
   PHOTOS_PER_INSTANCE_STRUCTURE: 6,
   POSSIBLE_IMAGE_EXTENSIONS: ['.jpg', '.jpeg', '.png', '.gif', '.bmp']
 };
@@ -141,8 +142,9 @@ const CONFORMIDAD_SHEET_CONFIG = {
   filas_por_bloque_plantilla: 113,
   max_fila_contenido_bloque_base: 110,
   // Dimensiones específicas para fotos en hojas de conformidad, usadas como override en sheet_conformidad.py
-  CONFORMIDAD_PHOTO_PIXEL_WIDTH: 449,
-  CONFORMIDAD_PHOTO_PIXEL_HEIGHT: 374,
+  // Estas serán sobrescritas por PHOTO_PIXEL_WIDTH y PHOTO_PIXEL_HEIGHT de PHOTO_CONFIG
+  CONFORMIDAD_PHOTO_PIXEL_WIDTH: null, // Será ajustado
+  CONFORMIDAD_PHOTO_PIXEL_HEIGHT: null, // Será ajustado
 };
 
 // Consolidar todas las configuraciones de estilo y diseño
@@ -158,5 +160,11 @@ const styleAndLayoutConfig = {
   BORDER_STYLES: BORDER_STYLES_EXCELJS, // Renombrado
   CONFORMIDAD_SHEET_CONFIG,
 };
+
+// Ajustar CONFORMIDAD_PHOTO_PIXEL_WIDTH y CONFORMIDAD_PHOTO_PIXEL_HEIGHT
+// para que apunten a los valores calculados en PHOTO_CONFIG
+styleAndLayoutConfig.CONFORMIDAD_SHEET_CONFIG.CONFORMIDAD_PHOTO_PIXEL_WIDTH = styleAndLayoutConfig.PHOTO_CONFIG.PHOTO_PIXEL_WIDTH;
+styleAndLayoutConfig.CONFORMIDAD_SHEET_CONFIG.CONFORMIDAD_PHOTO_PIXEL_HEIGHT = styleAndLayoutConfig.PHOTO_CONFIG.PHOTO_PIXEL_HEIGHT;
+
 
 export default styleAndLayoutConfig;

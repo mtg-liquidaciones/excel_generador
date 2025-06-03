@@ -1,0 +1,708 @@
+2025-06-02 21:33:56 info: Servicio Generador de Excel iniciado en el puerto 9898
+2025-06-02 21:33:56 info: Entorno actual: development
+2025-06-02 21:33:56 info: Directorio de logs asegurado: logs
+2025-06-02 21:34:17 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 21:34:17 info: POST /generar_excel request received from ::1
+2025-06-02 21:34:17 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:34:17 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:34:17 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 21:34:17 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 21:34:17 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 21:34:17 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C7': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:130:5)
+    at async createSheetActaResumen (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetActaResumen.js:111:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:43:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:34:17 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 21:34:17 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 21:34:17 info: 'Acta Resumen Pext' created.
+2025-06-02 21:34:17 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 21:34:17 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 21:34:20 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 21:34:20 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 21:34:20 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 21:34:20 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 21:34:20 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 21:34:20 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C6': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:130:5)
+    at async createConformitySheetInstance (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetConformidad.js:266:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:133:11)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:34:20 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 21:34:20 info: Conformity sheet instance created with offset 0
+2025-06-02 21:34:20 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 21:34:20 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 21:34:20 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 21:34:20 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'B2': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:130:5)
+    at async createSheetMedicionesOTDR (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetMedicionesOTDR.js:70:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:159:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:34:20 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 21:34:20 info: Mediciones OTDR sheet created successfully.
+2025-06-02 21:34:20 info: 'Mediciones OTDR' created.
+2025-06-02 21:34:20 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 21:34:20 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 21:34:20 info: 200 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 21:55:00 info: Servicio Generador de Excel iniciado en el puerto 9898
+2025-06-02 21:55:00 info: Entorno actual: development
+2025-06-02 21:55:00 info: Directorio de logs asegurado: logs
+2025-06-02 21:55:04 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 21:55:04 info: POST /generar_excel request received from ::1
+2025-06-02 21:55:04 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:55:04 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:55:04 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 21:55:04 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 21:55:04 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 21:55:04 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C7': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetActaResumen (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetActaResumen.js:111:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:43:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:55:04 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 21:55:04 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 21:55:04 info: 'Acta Resumen Pext' created.
+2025-06-02 21:55:04 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 21:55:04 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 21:55:07 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 21:55:07 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 21:55:07 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 21:55:07 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 21:55:07 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 21:55:07 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C6': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createConformitySheetInstance (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetConformidad.js:266:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:133:11)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:55:07 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 21:55:07 info: Conformity sheet instance created with offset 0
+2025-06-02 21:55:07 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 21:55:07 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 21:55:07 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 21:55:07 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'B2': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetMedicionesOTDR (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetMedicionesOTDR.js:70:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:159:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:55:07 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 21:55:07 info: Mediciones OTDR sheet created successfully.
+2025-06-02 21:55:07 info: 'Mediciones OTDR' created.
+2025-06-02 21:55:07 error: Error saving Excel file to C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx: EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx' EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx'
+Error: EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx'
+2025-06-02 21:55:07 error: Excel generation failed or was partial for 'C:\Users\MAOC\Desktop\240304': Error saving Excel: EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx'
+2025-06-02 21:55:07 info: 500 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 21:55:29 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 21:55:29 info: POST /generar_excel request received from ::1
+2025-06-02 21:55:29 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:55:29 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:55:29 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 21:55:29 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 21:55:29 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 21:55:29 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C7': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetActaResumen (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetActaResumen.js:111:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:43:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:55:29 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 21:55:29 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 21:55:29 info: 'Acta Resumen Pext' created.
+2025-06-02 21:55:29 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 21:55:29 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 21:55:32 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 21:55:32 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 21:55:32 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 21:55:32 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 21:55:32 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 21:55:32 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C6': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createConformitySheetInstance (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetConformidad.js:266:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:133:11)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:55:32 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 21:55:32 info: Conformity sheet instance created with offset 0
+2025-06-02 21:55:32 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 21:55:32 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 21:55:32 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 21:55:32 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'B2': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetMedicionesOTDR (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetMedicionesOTDR.js:70:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:159:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:55:32 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 21:55:32 info: Mediciones OTDR sheet created successfully.
+2025-06-02 21:55:32 info: 'Mediciones OTDR' created.
+2025-06-02 21:55:32 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 21:55:32 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 21:55:32 info: 200 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 21:57:31 info: Servicio Generador de Excel iniciado en el puerto 9898
+2025-06-02 21:57:31 info: Entorno actual: development
+2025-06-02 21:57:31 info: Directorio de logs asegurado: logs
+2025-06-02 21:57:40 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 21:57:40 info: POST /generar_excel request received from ::1
+2025-06-02 21:57:40 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:57:40 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 21:57:40 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 21:57:40 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 21:57:40 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 21:57:40 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C7': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetActaResumen (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetActaResumen.js:111:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:43:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:57:40 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 21:57:40 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 21:57:40 info: 'Acta Resumen Pext' created.
+2025-06-02 21:57:40 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 21:57:40 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 21:57:42 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 21:57:42 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 21:57:42 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 21:57:42 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 21:57:42 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 21:57:42 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C6': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createConformitySheetInstance (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetConformidad.js:268:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:133:11)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:57:42 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 21:57:43 info: Conformity sheet instance created with offset 0
+2025-06-02 21:57:43 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 21:57:43 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 21:57:43 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 21:57:43 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'B2': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetMedicionesOTDR (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetMedicionesOTDR.js:70:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:159:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 21:57:43 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 21:57:43 info: Mediciones OTDR sheet created successfully.
+2025-06-02 21:57:43 info: 'Mediciones OTDR' created.
+2025-06-02 21:57:43 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 21:57:43 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 21:57:43 info: 200 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:01:49 info: Servicio Generador de Excel iniciado en el puerto 9898
+2025-06-02 22:01:49 info: Entorno actual: development
+2025-06-02 22:01:49 info: Directorio de logs asegurado: logs
+2025-06-02 22:01:52 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:01:52 info: POST /generar_excel request received from ::1
+2025-06-02 22:01:52 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:01:52 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:01:52 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 22:01:52 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 22:01:52 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 22:01:52 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C7': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetActaResumen (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetActaResumen.js:111:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:43:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 22:01:52 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 22:01:52 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 22:01:52 info: 'Acta Resumen Pext' created.
+2025-06-02 22:01:52 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 22:01:52 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:01:55 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:01:55 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:01:55 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 22:01:55 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 22:01:55 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 22:01:55 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'C6': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createConformitySheetInstance (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetConformidad.js:268:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:133:11)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 22:01:55 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:01:55 info: Conformity sheet instance created with offset 0
+2025-06-02 22:01:55 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 22:01:55 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 22:01:55 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 22:01:55 error: Error al procesar/insertar imagen 'C:/Users/MAOC/Desktop/generador excel/logogtd.png' en 'B2': ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png' ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+Error: ENOENT: no such file or directory, access 'C:\Users\MAOC\Desktop\generador excel\logogtd.png'
+    at async Object.access (node:internal/fs/promises:605:10)
+    at async insertResizedImage (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/excelUtils.js:131:5)
+    at async createSheetMedicionesOTDR (file:///C:/Users/MAOC/Desktop/excel_generador/src/excelGeneration/sheetMedicionesOTDR.js:70:7)
+    at async generateFullExcelForPath (file:///C:/Users/MAOC/Desktop/excel_generador/src/services/excelProcessingService.js:159:3)
+    at async file:///C:/Users/MAOC/Desktop/excel_generador/src/routes/excelRoutes.js:76:20
+2025-06-02 22:01:55 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 22:01:55 info: Mediciones OTDR sheet created successfully.
+2025-06-02 22:01:55 info: 'Mediciones OTDR' created.
+2025-06-02 22:01:55 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:01:55 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:01:55 info: 200 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:04:21 info: Servicio Generador de Excel iniciado en el puerto 9898
+2025-06-02 22:04:21 info: Entorno actual: development
+2025-06-02 22:04:21 info: Directorio de logs asegurado: logs
+2025-06-02 22:04:32 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:04:32 info: POST /generar_excel request received from ::1
+2025-06-02 22:04:32 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:04:32 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:04:32 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 22:04:32 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 22:04:32 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 22:04:32 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 22:04:32 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 22:04:32 info: 'Acta Resumen Pext' created.
+2025-06-02 22:04:32 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 22:04:32 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:04:35 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:04:35 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:04:35 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 22:04:35 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 22:04:35 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 22:04:35 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:04:35 info: Conformity sheet instance created with offset 0
+2025-06-02 22:04:35 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 22:04:35 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 22:04:35 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 22:04:35 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 22:04:35 info: Mediciones OTDR sheet created successfully.
+2025-06-02 22:04:35 info: 'Mediciones OTDR' created.
+2025-06-02 22:04:35 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:04:35 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:04:35 info: 200 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:05:02 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:05:02 info: POST /generar_excel request received from ::1
+2025-06-02 22:05:02 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:05:02 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:05:02 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 22:05:02 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 22:05:02 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 22:05:02 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 22:05:02 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 22:05:02 info: 'Acta Resumen Pext' created.
+2025-06-02 22:05:02 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 22:05:02 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:05 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:05 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:05 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 22:05:05 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 22:05:05 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 22:05:05 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:05 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:05 info: Processing subfolder for conformity sheet: Empalmes
+2025-06-02 22:05:05 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:06 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:06 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:06 info: Found 15 photo keys (free names allowed) for 'Empalmes'. Order will be based on JSON key order.
+2025-06-02 22:05:06 info: Processed 15 photos with comments for 'Empalmes'.
+2025-06-02 22:05:06 info: Total valid photos for 'Empalmes': 15. Template instances: 3
+2025-06-02 22:05:06 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:06 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:06 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:05:06 info: Conformity sheet instance created with offset 113
+2025-06-02 22:05:06 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:05:06 info: Conformity sheet instance created with offset 226
+2025-06-02 22:05:06 info: Processing subfolder for conformity sheet: Entrega de Nodos
+2025-06-02 22:05:06 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:07 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:07 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:07 info: Found 6 photo keys (free names allowed) for 'Entrega de Nodos'. Order will be based on JSON key order.
+2025-06-02 22:05:07 info: Processed 6 photos with comments for 'Entrega de Nodos'.
+2025-06-02 22:05:07 info: Total valid photos for 'Entrega de Nodos': 6. Template instances: 1
+2025-06-02 22:05:07 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:07 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:07 info: Processing subfolder for conformity sheet: Manipulación de MUFA
+2025-06-02 22:05:07 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:08 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:08 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:08 info: Found 6 photo keys (free names allowed) for 'Manipulación de MUFA'. Order will be based on JSON key order.
+2025-06-02 22:05:08 info: Processed 6 photos with comments for 'Manipulación de MUFA'.
+2025-06-02 22:05:08 info: Total valid photos for 'Manipulación de MUFA': 6. Template instances: 1
+2025-06-02 22:05:08 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:08 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:08 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 22:05:08 info: Processing subfolder for conformity sheet: OO.CC - CAMARAS
+2025-06-02 22:05:08 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:10 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:10 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:10 info: Found 15 photo keys (free names allowed) for 'OO.CC - CAMARAS'. Order will be based on JSON key order.
+2025-06-02 22:05:10 info: Processed 15 photos with comments for 'OO.CC - CAMARAS'.
+2025-06-02 22:05:10 info: Total valid photos for 'OO.CC - CAMARAS': 15. Template instances: 3
+2025-06-02 22:05:10 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:10 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:10 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:05:10 info: Conformity sheet instance created with offset 113
+2025-06-02 22:05:10 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:05:10 info: Conformity sheet instance created with offset 226
+2025-06-02 22:05:10 info: Processing subfolder for conformity sheet: OO.CC - CANALIZADO
+2025-06-02 22:05:10 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:11 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:11 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:11 info: Found 6 photo keys (free names allowed) for 'OO.CC - CANALIZADO'. Order will be based on JSON key order.
+2025-06-02 22:05:11 info: Processed 6 photos with comments for 'OO.CC - CANALIZADO'.
+2025-06-02 22:05:11 info: Total valid photos for 'OO.CC - CANALIZADO': 6. Template instances: 1
+2025-06-02 22:05:11 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:11 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:11 info: Processing subfolder for conformity sheet: OO.CC - POSTES
+2025-06-02 22:05:11 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:12 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:12 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:12 info: Found 6 photo keys (free names allowed) for 'OO.CC - POSTES'. Order will be based on JSON key order.
+2025-06-02 22:05:12 info: Processed 6 photos with comments for 'OO.CC - POSTES'.
+2025-06-02 22:05:12 info: Total valid photos for 'OO.CC - POSTES': 6. Template instances: 1
+2025-06-02 22:05:12 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:12 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:12 info: Processing subfolder for conformity sheet: Reservas Aereas
+2025-06-02 22:05:12 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:05:14 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:05:14 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:05:14 info: Found 15 photo keys (free names allowed) for 'Reservas Aereas'. Order will be based on JSON key order.
+2025-06-02 22:05:14 info: Processed 15 photos with comments for 'Reservas Aereas'.
+2025-06-02 22:05:14 info: Total valid photos for 'Reservas Aereas': 15. Template instances: 3
+2025-06-02 22:05:14 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:05:14 info: Conformity sheet instance created with offset 0
+2025-06-02 22:05:14 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:05:14 info: Conformity sheet instance created with offset 113
+2025-06-02 22:05:14 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:05:14 info: Conformity sheet instance created with offset 226
+2025-06-02 22:05:14 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 22:05:14 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 22:05:14 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 22:05:14 info: Mediciones OTDR sheet created successfully.
+2025-06-02 22:05:14 info: 'Mediciones OTDR' created.
+2025-06-02 22:05:14 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:05:14 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:05:14 info: 200 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:10:35 info: Servicio Generador de Excel iniciado en el puerto 9898
+2025-06-02 22:10:35 info: Entorno actual: development
+2025-06-02 22:10:35 info: Directorio de logs asegurado: logs
+2025-06-02 22:10:38 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:10:38 info: POST /generar_excel request received from ::1
+2025-06-02 22:10:38 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:10:38 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:10:38 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 22:10:38 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 22:10:38 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 22:10:38 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 22:10:38 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 22:10:38 info: 'Acta Resumen Pext' created.
+2025-06-02 22:10:38 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 22:10:38 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:41 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:41 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:41 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 22:10:41 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 22:10:41 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 22:10:41 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:41 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:41 info: Processing subfolder for conformity sheet: Empalmes
+2025-06-02 22:10:41 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:42 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:42 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:42 info: Found 15 photo keys (free names allowed) for 'Empalmes'. Order will be based on JSON key order.
+2025-06-02 22:10:42 info: Processed 15 photos with comments for 'Empalmes'.
+2025-06-02 22:10:42 info: Total valid photos for 'Empalmes': 15. Template instances: 3
+2025-06-02 22:10:42 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:42 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:42 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:10:42 info: Conformity sheet instance created with offset 113
+2025-06-02 22:10:42 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:10:42 info: Conformity sheet instance created with offset 226
+2025-06-02 22:10:42 info: Processing subfolder for conformity sheet: Entrega de Nodos
+2025-06-02 22:10:42 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:43 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:43 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:43 info: Found 6 photo keys (free names allowed) for 'Entrega de Nodos'. Order will be based on JSON key order.
+2025-06-02 22:10:43 info: Processed 6 photos with comments for 'Entrega de Nodos'.
+2025-06-02 22:10:43 info: Total valid photos for 'Entrega de Nodos': 6. Template instances: 1
+2025-06-02 22:10:43 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:43 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:43 info: Processing subfolder for conformity sheet: Manipulación de MUFA
+2025-06-02 22:10:43 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:44 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:44 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:44 info: Found 6 photo keys (free names allowed) for 'Manipulación de MUFA'. Order will be based on JSON key order.
+2025-06-02 22:10:44 info: Processed 6 photos with comments for 'Manipulación de MUFA'.
+2025-06-02 22:10:44 info: Total valid photos for 'Manipulación de MUFA': 6. Template instances: 1
+2025-06-02 22:10:44 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:44 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:44 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 22:10:44 info: Processing subfolder for conformity sheet: OO.CC - CAMARAS
+2025-06-02 22:10:44 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:46 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:46 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:46 info: Found 15 photo keys (free names allowed) for 'OO.CC - CAMARAS'. Order will be based on JSON key order.
+2025-06-02 22:10:46 info: Processed 15 photos with comments for 'OO.CC - CAMARAS'.
+2025-06-02 22:10:46 info: Total valid photos for 'OO.CC - CAMARAS': 15. Template instances: 3
+2025-06-02 22:10:46 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:46 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:46 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:10:46 info: Conformity sheet instance created with offset 113
+2025-06-02 22:10:46 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:10:46 info: Conformity sheet instance created with offset 226
+2025-06-02 22:10:46 info: Processing subfolder for conformity sheet: OO.CC - CANALIZADO
+2025-06-02 22:10:46 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:47 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:47 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:47 info: Found 6 photo keys (free names allowed) for 'OO.CC - CANALIZADO'. Order will be based on JSON key order.
+2025-06-02 22:10:47 info: Processed 6 photos with comments for 'OO.CC - CANALIZADO'.
+2025-06-02 22:10:47 info: Total valid photos for 'OO.CC - CANALIZADO': 6. Template instances: 1
+2025-06-02 22:10:47 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:47 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:47 info: Processing subfolder for conformity sheet: OO.CC - POSTES
+2025-06-02 22:10:47 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:48 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:48 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:48 info: Found 6 photo keys (free names allowed) for 'OO.CC - POSTES'. Order will be based on JSON key order.
+2025-06-02 22:10:48 info: Processed 6 photos with comments for 'OO.CC - POSTES'.
+2025-06-02 22:10:48 info: Total valid photos for 'OO.CC - POSTES': 6. Template instances: 1
+2025-06-02 22:10:48 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:48 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:48 info: Processing subfolder for conformity sheet: Reservas Aereas
+2025-06-02 22:10:48 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:10:49 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:10:49 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:10:49 info: Found 15 photo keys (free names allowed) for 'Reservas Aereas'. Order will be based on JSON key order.
+2025-06-02 22:10:49 info: Processed 15 photos with comments for 'Reservas Aereas'.
+2025-06-02 22:10:49 info: Total valid photos for 'Reservas Aereas': 15. Template instances: 3
+2025-06-02 22:10:49 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:10:49 info: Conformity sheet instance created with offset 0
+2025-06-02 22:10:49 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:10:50 info: Conformity sheet instance created with offset 113
+2025-06-02 22:10:50 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:10:50 info: Conformity sheet instance created with offset 226
+2025-06-02 22:10:50 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 22:10:50 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 22:10:50 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 22:10:50 info: Mediciones OTDR sheet created successfully.
+2025-06-02 22:10:50 info: 'Mediciones OTDR' created.
+2025-06-02 22:10:50 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:10:50 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:10:50 info: 200 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:11:24 info: Servicio Generador de Excel iniciado en el puerto 9898
+2025-06-02 22:11:24 info: Entorno actual: development
+2025-06-02 22:11:24 info: Directorio de logs asegurado: logs
+2025-06-02 22:11:28 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:11:28 info: POST /generar_excel request received from ::1
+2025-06-02 22:11:28 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:11:28 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:11:28 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 22:11:28 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 22:11:28 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 22:11:28 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 22:11:28 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 22:11:28 info: 'Acta Resumen Pext' created.
+2025-06-02 22:11:28 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 22:11:28 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:30 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:30 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:30 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 22:11:30 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 22:11:30 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 22:11:30 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:30 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:30 info: Processing subfolder for conformity sheet: Empalmes
+2025-06-02 22:11:30 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:31 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:31 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:31 info: Found 15 photo keys (free names allowed) for 'Empalmes'. Order will be based on JSON key order.
+2025-06-02 22:11:31 info: Processed 15 photos with comments for 'Empalmes'.
+2025-06-02 22:11:31 info: Total valid photos for 'Empalmes': 15. Template instances: 3
+2025-06-02 22:11:31 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:31 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:31 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:11:31 info: Conformity sheet instance created with offset 113
+2025-06-02 22:11:31 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:11:31 info: Conformity sheet instance created with offset 226
+2025-06-02 22:11:31 info: Processing subfolder for conformity sheet: Entrega de Nodos
+2025-06-02 22:11:31 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:32 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:32 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:32 info: Found 6 photo keys (free names allowed) for 'Entrega de Nodos'. Order will be based on JSON key order.
+2025-06-02 22:11:32 info: Processed 6 photos with comments for 'Entrega de Nodos'.
+2025-06-02 22:11:32 info: Total valid photos for 'Entrega de Nodos': 6. Template instances: 1
+2025-06-02 22:11:32 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:32 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:32 info: Processing subfolder for conformity sheet: Manipulación de MUFA
+2025-06-02 22:11:32 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:33 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:33 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:33 info: Found 6 photo keys (free names allowed) for 'Manipulación de MUFA'. Order will be based on JSON key order.
+2025-06-02 22:11:33 info: Processed 6 photos with comments for 'Manipulación de MUFA'.
+2025-06-02 22:11:33 info: Total valid photos for 'Manipulación de MUFA': 6. Template instances: 1
+2025-06-02 22:11:33 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:33 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:33 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 22:11:33 info: Processing subfolder for conformity sheet: OO.CC - CAMARAS
+2025-06-02 22:11:33 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:35 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:35 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:35 info: Found 15 photo keys (free names allowed) for 'OO.CC - CAMARAS'. Order will be based on JSON key order.
+2025-06-02 22:11:35 info: Processed 15 photos with comments for 'OO.CC - CAMARAS'.
+2025-06-02 22:11:35 info: Total valid photos for 'OO.CC - CAMARAS': 15. Template instances: 3
+2025-06-02 22:11:35 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:35 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:35 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:11:35 info: Conformity sheet instance created with offset 113
+2025-06-02 22:11:35 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:11:35 info: Conformity sheet instance created with offset 226
+2025-06-02 22:11:35 info: Processing subfolder for conformity sheet: OO.CC - CANALIZADO
+2025-06-02 22:11:35 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:36 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:36 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:36 info: Found 6 photo keys (free names allowed) for 'OO.CC - CANALIZADO'. Order will be based on JSON key order.
+2025-06-02 22:11:36 info: Processed 6 photos with comments for 'OO.CC - CANALIZADO'.
+2025-06-02 22:11:36 info: Total valid photos for 'OO.CC - CANALIZADO': 6. Template instances: 1
+2025-06-02 22:11:36 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:36 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:36 info: Processing subfolder for conformity sheet: OO.CC - POSTES
+2025-06-02 22:11:36 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:37 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:37 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:37 info: Found 6 photo keys (free names allowed) for 'OO.CC - POSTES'. Order will be based on JSON key order.
+2025-06-02 22:11:37 info: Processed 6 photos with comments for 'OO.CC - POSTES'.
+2025-06-02 22:11:37 info: Total valid photos for 'OO.CC - POSTES': 6. Template instances: 1
+2025-06-02 22:11:37 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:37 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:37 info: Processing subfolder for conformity sheet: Reservas Aereas
+2025-06-02 22:11:37 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:38 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:38 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:38 info: Found 15 photo keys (free names allowed) for 'Reservas Aereas'. Order will be based on JSON key order.
+2025-06-02 22:11:38 info: Processed 15 photos with comments for 'Reservas Aereas'.
+2025-06-02 22:11:38 info: Total valid photos for 'Reservas Aereas': 15. Template instances: 3
+2025-06-02 22:11:38 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:38 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:38 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:11:38 info: Conformity sheet instance created with offset 113
+2025-06-02 22:11:38 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:11:39 info: Conformity sheet instance created with offset 226
+2025-06-02 22:11:39 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 22:11:39 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 22:11:39 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 22:11:39 info: Mediciones OTDR sheet created successfully.
+2025-06-02 22:11:39 info: 'Mediciones OTDR' created.
+2025-06-02 22:11:39 error: Error saving Excel file to C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx: EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx' EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx'
+Error: EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx'
+2025-06-02 22:11:39 error: Excel generation failed or was partial for 'C:\Users\MAOC\Desktop\240304': Error saving Excel: EBUSY: resource busy or locked, open 'C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx'
+2025-06-02 22:11:39 info: 500 POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:11:49 info: POST /api/excel/generar_excel - IP: ::1
+2025-06-02 22:11:49 info: POST /generar_excel request received from ::1
+2025-06-02 22:11:49 info: Project path received: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:11:49 info: Starting Excel generation for project in: C:\Users\MAOC\Desktop\240304
+2025-06-02 22:11:49 info: Main datos.json loaded from C:\Users\MAOC\Desktop\240304\datos.json.
+2025-06-02 22:11:49 info: Creating 'Acta Resumen Pext' sheet...
+2025-06-02 22:11:49 info: Iniciando creación de hoja 'Acta Resumen Pext' (versión detallada)...
+2025-06-02 22:11:49 info: Acta Resumen: Logo insertado en C7 via insertResizedImage.
+2025-06-02 22:11:49 info: Acta Resumen Pext sheet creation logic (detailed spec) fully completed.
+2025-06-02 22:11:49 info: 'Acta Resumen Pext' created.
+2025-06-02 22:11:49 info: Processing subfolder for conformity sheet: Cables Aereo y Subterraneos
+2025-06-02 22:11:49 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:51 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:51 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:51 info: Found 6 photo keys (free names allowed) for 'Cables Aereo y Subterraneos'. Order will be based on JSON key order.
+2025-06-02 22:11:51 info: Processed 6 photos with comments for 'Cables Aereo y Subterraneos'.
+2025-06-02 22:11:51 info: Total valid photos for 'Cables Aereo y Subterraneos': 6. Template instances: 1
+2025-06-02 22:11:51 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:51 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:51 info: Processing subfolder for conformity sheet: Empalmes
+2025-06-02 22:11:51 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:53 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:53 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:53 info: Found 15 photo keys (free names allowed) for 'Empalmes'. Order will be based on JSON key order.
+2025-06-02 22:11:53 info: Processed 15 photos with comments for 'Empalmes'.
+2025-06-02 22:11:53 info: Total valid photos for 'Empalmes': 15. Template instances: 3
+2025-06-02 22:11:53 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:53 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:53 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:11:53 info: Conformity sheet instance created with offset 113
+2025-06-02 22:11:53 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:11:53 info: Conformity sheet instance created with offset 226
+2025-06-02 22:11:53 info: Processing subfolder for conformity sheet: Entrega de Nodos
+2025-06-02 22:11:53 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:54 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:54 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:54 info: Found 6 photo keys (free names allowed) for 'Entrega de Nodos'. Order will be based on JSON key order.
+2025-06-02 22:11:54 info: Processed 6 photos with comments for 'Entrega de Nodos'.
+2025-06-02 22:11:54 info: Total valid photos for 'Entrega de Nodos': 6. Template instances: 1
+2025-06-02 22:11:54 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:54 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:54 info: Processing subfolder for conformity sheet: Manipulación de MUFA
+2025-06-02 22:11:54 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:55 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:55 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:55 info: Found 6 photo keys (free names allowed) for 'Manipulación de MUFA'. Order will be based on JSON key order.
+2025-06-02 22:11:55 info: Processed 6 photos with comments for 'Manipulación de MUFA'.
+2025-06-02 22:11:55 info: Total valid photos for 'Manipulación de MUFA': 6. Template instances: 1
+2025-06-02 22:11:55 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:55 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:55 info: Subfolder 'new carpeta' ignored (not in FOLDER_TO_TITLE_MAP or a designated special folder).
+2025-06-02 22:11:55 info: Processing subfolder for conformity sheet: OO.CC - CAMARAS
+2025-06-02 22:11:55 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:56 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:56 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:56 info: Found 15 photo keys (free names allowed) for 'OO.CC - CAMARAS'. Order will be based on JSON key order.
+2025-06-02 22:11:56 info: Processed 15 photos with comments for 'OO.CC - CAMARAS'.
+2025-06-02 22:11:56 info: Total valid photos for 'OO.CC - CAMARAS': 15. Template instances: 3
+2025-06-02 22:11:56 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:56 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:56 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:11:56 info: Conformity sheet instance created with offset 113
+2025-06-02 22:11:56 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:11:56 info: Conformity sheet instance created with offset 226
+2025-06-02 22:11:56 info: Processing subfolder for conformity sheet: OO.CC - CANALIZADO
+2025-06-02 22:11:56 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:57 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:57 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:57 info: Found 6 photo keys (free names allowed) for 'OO.CC - CANALIZADO'. Order will be based on JSON key order.
+2025-06-02 22:11:57 info: Processed 6 photos with comments for 'OO.CC - CANALIZADO'.
+2025-06-02 22:11:57 info: Total valid photos for 'OO.CC - CANALIZADO': 6. Template instances: 1
+2025-06-02 22:11:57 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:57 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:57 info: Processing subfolder for conformity sheet: OO.CC - POSTES
+2025-06-02 22:11:58 info: Enviando 6 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:11:58 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:11:58 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:11:58 info: Found 6 photo keys (free names allowed) for 'OO.CC - POSTES'. Order will be based on JSON key order.
+2025-06-02 22:11:58 info: Processed 6 photos with comments for 'OO.CC - POSTES'.
+2025-06-02 22:11:58 info: Total valid photos for 'OO.CC - POSTES': 6. Template instances: 1
+2025-06-02 22:11:58 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:11:58 info: Conformity sheet instance created with offset 0
+2025-06-02 22:11:58 info: Processing subfolder for conformity sheet: Reservas Aereas
+2025-06-02 22:11:58 info: Enviando 15 comentarios a N8N (https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2)...
+2025-06-02 22:12:00 info: Respuesta de N8N - Código de estado: 200
+2025-06-02 22:12:00 info: Comentarios decodificados de N8N exitosamente.
+2025-06-02 22:12:00 info: Found 15 photo keys (free names allowed) for 'Reservas Aereas'. Order will be based on JSON key order.
+2025-06-02 22:12:00 info: Processed 15 photos with comments for 'Reservas Aereas'.
+2025-06-02 22:12:00 info: Total valid photos for 'Reservas Aereas': 15. Template instances: 3
+2025-06-02 22:12:00 info: Conformity Sheet (offset 0): Call to insertResizedImage completed for logo at C6.
+2025-06-02 22:12:00 info: Conformity sheet instance created with offset 0
+2025-06-02 22:12:00 info: Conformity Sheet (offset 113): Call to insertResizedImage completed for logo at C119.
+2025-06-02 22:12:00 info: Conformity sheet instance created with offset 113
+2025-06-02 22:12:00 info: Conformity Sheet (offset 226): Call to insertResizedImage completed for logo at C232.
+2025-06-02 22:12:00 info: Conformity sheet instance created with offset 226
+2025-06-02 22:12:00 info: Creating 'Mediciones OTDR' sheet...
+2025-06-02 22:12:00 info: Iniciando creación de hoja 'Mediciones OTDR'...
+2025-06-02 22:12:00 info: Mediciones OTDR: Logo insertado en B2 via insertResizedImage.
+2025-06-02 22:12:00 info: Mediciones OTDR sheet created successfully.
+2025-06-02 22:12:00 info: 'Mediciones OTDR' created.
+2025-06-02 22:12:00 info: Excel file generated successfully at: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:12:00 info: Excel generation successful for 'C:\Users\MAOC\Desktop\240304': Excel generated successfully.. File: C:\Users\MAOC\Desktop\240304\240304-ACTA DE CONFORMIDAD.xlsx
+2025-06-02 22:12:00 info: 200 POST /api/excel/generar_excel - IP: ::1

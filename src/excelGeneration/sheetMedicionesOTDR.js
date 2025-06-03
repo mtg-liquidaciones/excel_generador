@@ -7,17 +7,7 @@ import {
   applyFullBorderToRange,
   insertResizedImage
 } from './excelUtils.js';
-
-// Placeholder logger
-const logger = {
-  info: (message) => console.log(`[INFO] sheetMedicionesOTDR: ${message}`),
-  warn: (message) => console.warn(`[WARN] sheetMedicionesOTDR: ${message}`),
-  error: (message, errorDetails) => {
-    const detailsString = errorDetails && typeof errorDetails === 'object' ? JSON.stringify(errorDetails) : errorDetails || '';
-    console.error(`[ERROR] sheetMedicionesOTDR: ${message}`, detailsString);
-  },
-  debug: (message) => console.log(`[DEBUG] sheetMedicionesOTDR: ${message}`),
-};
+import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
 
 // --- Constantes de Diseño y Datos Específicas para Mediciones OTDR ---
 const PIXEL_TO_CHAR_FACTOR_COL_WIDTH = 7.0;
@@ -96,7 +86,7 @@ async function createSheetMedicionesOTDR(sheet, generalData, logoPath) {
     font: COMMON_FONTS.title_arial_18_bold_center,
     alignment: COMMON_ALIGNMENTS.center_center_no_wrap
   });
-  
+
   dataInfoOTDR.forEach(item => {
     applyCellStyles(sheet.getCell(item.labelCell), {
         value: item.labelText,
@@ -107,7 +97,7 @@ async function createSheetMedicionesOTDR(sheet, generalData, logoPath) {
     const dataCell = sheet.getCell(item.dataAnchor); // Celda superior izquierda del merge de datos
     sheet.mergeCells(item.dataMergeRange);
     applyOuterBorder(sheet, item.dataMergeRange, mediumOuterBorderSide);
-    
+
     if (item.jsonKey) {
         const dataValue = generalData[item.jsonKey] || "";
         applyCellStyles(dataCell, {
@@ -121,7 +111,7 @@ async function createSheetMedicionesOTDR(sheet, generalData, logoPath) {
         dataCell.fill = yellowFill;
     }
   });
-  
+
   const labelFontOtdr = COMMON_FONTS.otdr_label_10_bold;
   const centerAlignWrap = COMMON_ALIGNMENTS.center_center_wrap;
 
@@ -140,7 +130,7 @@ async function createSheetMedicionesOTDR(sheet, generalData, logoPath) {
   applyCellStyles(sheet.getCell('H16'), { value: "Atenuación Db / Km", font: labelFontOtdr, alignment: centerAlignWrap });
   applyOuterBorder(sheet, 'J16:J16', mediumOuterBorderSide);
   sheet.getCell('J16').fill = yellowFill;
-  
+
   // Fila 18: Marca y Modelo OTDR
   applyCellStyles(sheet.getCell('B18'), { value: "Marca OTDR", font: labelFontOtdr, alignment: centerAlignWrap });
   sheet.mergeCells('C18:D18');

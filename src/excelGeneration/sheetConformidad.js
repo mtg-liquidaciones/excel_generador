@@ -6,20 +6,9 @@ import {
   applyOuterBorder,
   insertResizedImage,
   offsetCellOrRangeRef,
-  parseCellRef, // Usada por insertResizedImage y offsetCellOrRangeRef
-  // getColumnNumber // Usada por parseCellRef, se asume que está en excelUtils o parseCellRef la maneja
+  parseCellRef,
 } from './excelUtils.js';
-
-// Placeholder logger - Reemplázalo con tu logger configurado
-const logger = {
-  info: (message) => console.log(`[INFO] sheetConformidad: ${message}`),
-  warn: (message) => console.warn(`[WARN] sheetConformidad: ${message}`),
-  error: (message, errorDetails) => {
-    const detailsString = errorDetails && typeof errorDetails === 'object' ? JSON.stringify(errorDetails) : errorDetails || '';
-    console.error(`[ERROR] sheetConformidad: ${message}`, detailsString);
-  },
-  debug: (message) => console.log(`[DEBUG] sheetConformidad: ${message}`),
-};
+import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
 
 // --- Funciones Auxiliares para la Plantilla de Conformidad ---
 
@@ -125,11 +114,11 @@ async function _createPhotoCommentSections(sheet, rowOffset, photosForInstance, 
     { photoAnchorCol: 'D', commentAnchorCol: 'D', photoBlockRowOffset: 52 },
     { photoAnchorCol: 'S', commentAnchorCol: 'S', photoBlockRowOffset: 52 },
   ];
-  
-  const photoAreaRelStartRow = 0; 
-  const photoAreaHeightRows = 22; 
+
+  const photoAreaRelStartRow = 0;
+  const photoAreaHeightRows = 22;
   const commentAreaRelStartRow = photoAreaHeightRows;
-  const commentAreaHeightRows = 2;  
+  const commentAreaHeightRows = 2;
 
   for (let blockIndex = 0; blockIndex < 3; blockIndex++) {
     const currentBlockBaseRow = absolutePhotoSectionStartRow + (blockIndex * 26);
@@ -153,9 +142,9 @@ async function _createPhotoCommentSections(sheet, rowOffset, photosForInstance, 
     sheet.mergeCells(`S${commentAreaStartActualRow}:AE${commentAreaEndActualRow}`);
     applyOuterBorder(sheet, `D${commentAreaStartActualRow}:P${commentAreaEndActualRow}`, commonStyles.BORDER_STYLES.THIN_SIDE);
     applyOuterBorder(sheet, `S${commentAreaStartActualRow}:AE${commentAreaEndActualRow}`, commonStyles.BORDER_STYLES.THIN_SIDE);
-    
+
     const spacingStartRow = commentAreaEndActualRow + 1;
-    const spacingEndRow = spacingStartRow + 1; 
+    const spacingEndRow = spacingStartRow + 1;
     for (let r = spacingStartRow; r <= spacingEndRow; r++) {
       if (sheet.getRow(r).height === undefined || sheet.getRow(r).height < 16.75 ) {
          sheet.getRow(r).height = 16.75;
@@ -173,9 +162,11 @@ async function _createPhotoCommentSections(sheet, rowOffset, photosForInstance, 
       try {
         await insertResizedImage(
           sheet, photoInfo.path, photoAnchorCell,
+          // *** MODIFICACIÓN CLAVE AQUÍ ***
+          // Usar las dimensiones calculadas de la configuración
           conformityConfig.CONFORMIDAD_PHOTO_PIXEL_WIDTH,
           conformityConfig.CONFORMIDAD_PHOTO_PIXEL_HEIGHT,
-          false
+          false // No mantener la relación de aspecto, forzar dimensiones exactas
         );
       } catch (e) {
         logger.error(`Failed to insert image ${photoInfo.path} at ${photoAnchorCell}: ${e.message}`);
@@ -272,11 +263,11 @@ async function createConformitySheetInstance(
     logger.warn(`Conformity Sheet (offset ${rowOffset}): Logo path (RUTA_LOGO_GTD) is undefined. Skipping logo.`);
   } else {
     try {
-      const logoNativeWidth = 64;
+      const logoNativeWidth = 64; // Mantener estas dimensiones para el logo
       const logoNativeHeight = 47;
       await insertResizedImage(
         sheet, RUTA_LOGO_GTD, actualLogoCellRef,
-        logoNativeWidth, logoNativeHeight, true
+        logoNativeWidth, logoNativeHeight, true // Mantener la relación de aspecto para el logo
       );
       logger.info(`Conformity Sheet (offset ${rowOffset}): Call to insertResizedImage completed for logo at ${actualLogoCellRef}.`);
     } catch (error) {
@@ -312,7 +303,7 @@ async function createConformitySheetInstance(
   // --- SECCIONES DE CONTENIDO PRINCIPAL (AHORA ACTIVAS) ---
   await _createPhotoCommentSections(sheet, rowOffset, photosForInstance, conformityConfig, { COMMON_FONTS, COMMON_ALIGNMENTS, BORDER_STYLES });
   _applySpecificBordersConformity(sheet, rowOffset, conformityConfig, BORDER_STYLES);
-  
+
   const startOuterBorderRow = 5 + rowOffset;
   const endOuterBorderActualRow = conformityConfig.max_fila_contenido_bloque_base + rowOffset;
   applyOuterBorder(sheet, `B${startOuterBorderRow}:AG${endOuterBorderActualRow}`, BORDER_STYLES.THICK_SIDE);
@@ -320,7 +311,7 @@ async function createConformitySheetInstance(
 
   // --- LÓGICA PARA ALTURAS DE FILA ESPECÍFICAS (111-114) CON NUEVA ALTURA ---
   const specificRowsToAdjust = [111, 112, 113, 114];
-  const customHeight = 28; // <--- CAMBIADO A 28
+  const customHeight = 19; // <--- CAMBIADO A 28
 
   specificRowsToAdjust.forEach(baseRowNumber => {
     const actualRowNumber = baseRowNumber + rowOffset;
