@@ -10,7 +10,7 @@
 // que tenías en tu config.py.
 // Para producción, es altamente recomendable configurar esto SÓLO vía variables de entorno.
 const N8N_WEBHOOK_URL =
-  process.env.N8N_WEBHOOK_URL || "https://n8n.everytel.pe/webhook/ab3abc73-a8c1-4d2c-bd41-32dc373e80f2";
+  process.env.N8N_WEBHOOK_URL;
 
 // Si hubiera otros servicios externos, sus configuraciones irían aquí.
 // Ejemplo:

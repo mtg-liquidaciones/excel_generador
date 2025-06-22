@@ -2,7 +2,7 @@
 
 // NOTA: Las rutas absolutas como RUTA_LOGO_GTD podrían ser mejor manejadas
 // a través de variables de entorno o haciéndolas relativas al proyecto.
-const RUTA_LOGO_GTD = process.env.RUTA_LOGO_GTD || "/var/www/excel_generador/logogtd.png";
+const RUTA_LOGO_GTD = process.env.RUTA_LOGO_GTD;
 
 const NOMBRE_ARCHIVO_DATOS_PRINCIPAL = "datos.json";
 const NOMBRE_ARCHIVO_COMENTARIOS = "comentarios.json";
