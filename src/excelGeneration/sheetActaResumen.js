@@ -38,15 +38,15 @@ const actaResumenRowHeights = {
 };
 
 const dataForSummaryWithJsonKeys = [
-    { labelText: "Ciudad", labelCell: "Q9", jsonKey: "Ciudad", dataRange: "R9:W9" },
-    { labelText: "Contratista", labelCell: "D11", jsonKey: "Contratista", dataRange: "E11:O11" },
-    { labelText: "N° PROY/ COD: AX", labelCell: "Q11", jsonKey: "N° PROY/ COD: AX", dataRange: "R11:W11" },
-    { labelText: "Distrito", labelCell: "D13", jsonKey: "Distrito", dataRange: "E13:O13" },
-    { labelText: "Fecha inicio", labelCell: "Q13", jsonKey: "Fecha Inicio", dataRange: "R13:W13" },
-    { labelText: "Nodo", labelCell: "D15", jsonKey: "Nodo", dataRange: "E15:O15" },
-    { labelText: "Fecha termino", labelCell: "Q15", jsonKey: "Fecha Término", dataRange: "R15:W15" },
-    { labelText: "Nombre cliente / Proyecto", labelCell: "D17", jsonKey: "Nombre cliente / Proyecto", dataRange: "H17:W17", preMergeLabel: "D17:G17" },
-    { labelText: "Direccion Cliente", labelCell: "D19", jsonKey: "Direccion Cliente", dataRange: "E19:W19" }
+    { labelText: "Ciudad", labelCell: "Q9", jsonKey: "city", dataRange: "R9:W9" },
+    { labelText: "Contratista", labelCell: "D11", jsonKey: "company", dataRange: "E11:O11" },
+    { labelText: "N° PROY/ COD: AX", labelCell: "Q11", jsonKey: "code", dataRange: "R11:W11" },
+    { labelText: "Distrito", labelCell: "D13", jsonKey: "district", dataRange: "E13:O13" },
+    { labelText: "Fecha inicio", labelCell: "Q13", jsonKey: "startDate", dataRange: "R13:W13" },
+    { labelText: "Nodo", labelCell: "D15", jsonKey: "node", dataRange: "E15:O15" },
+    { labelText: "Fecha termino", labelCell: "Q15", jsonKey: "endDate", dataRange: "R15:W15" },
+    { labelText: "Nombre cliente / Proyecto", labelCell: "D17", jsonKey: "projectName", dataRange: "H17:W17", preMergeLabel: "D17:G17" },
+    { labelText: "Direccion Cliente", labelCell: "D19", jsonKey: "clientAddress", dataRange: "E19:W19" }
 ];
 
 const checklistLayout = [

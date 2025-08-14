@@ -26,18 +26,17 @@ const otdrRowHeights = {
     11: 6.75, 12: 13.5, 13: 6.75, 14: 13.5, 15: 6.75, 16: 13.5, 17: 6.75, 18: 13.5, 19: 13.5,
     20: 33.75
 };
-
 const dataInfoOTDR = [
-    { labelText: "Cliente", labelCell: "B6", jsonKey: "Nombre cliente / Proyecto", dataAnchor: "C6", dataMergeRange: "C6:F6" },
-    { labelText: "Distrito", labelCell: "G6", jsonKey: "Distrito", dataAnchor: "H6", dataMergeRange: "H6:J6" },
-    { labelText: "N° Proyecto", labelCell: "B8", jsonKey: "N° PROY/ COD: AX", dataAnchor: "C8", dataMergeRange: "C8:F8" },
-    { labelText: "Fecha", labelCell: "G8", jsonKey: null, dataAnchor: "H8", dataMergeRange: "H8:J8" },
-    { labelText: "Nodo", labelCell: "B10", jsonKey: "Nodo", dataAnchor: "C10", dataMergeRange: "C10:D10" },
+    { labelText: "Cliente", labelCell: "B6", jsonKey: "projectName", dataAnchor: "C6", dataMergeRange: "C6:F6" },
+    { labelText: "Distrito", labelCell: "G6", jsonKey: "district", dataAnchor: "H6", dataMergeRange: "H6:J6" },
+    { labelText: "N° Proyecto", labelCell: "B8", jsonKey: "code", dataAnchor: "C8", dataMergeRange: "C8:F8" },
+    { labelText: "Fecha", labelCell: "G8", jsonKey: "endDate", dataAnchor: "H8", dataMergeRange: "H8:J8" },
+    { labelText: "Nodo", labelCell: "B10", jsonKey: "node", dataAnchor: "C10", dataMergeRange: "C10:D10" },
     { labelText: "Tipo de fibra", labelCell: "G10", jsonKey: null, dataAnchor: "H10", dataMergeRange: "H10:J10" },
     { labelText: "Medic. Desde", labelCell: "B12", jsonKey: null, dataAnchor: "C12", dataMergeRange: "C12:D12" },
     { labelText: "Hasta", labelCell: "G12", jsonKey: null, dataAnchor: "H12", dataMergeRange: "H12:I12" },
-    { labelText: "Cable", labelCell: "B14", jsonKey: null, dataAnchor: "C14", dataMergeRange: "C14:E14", addYellowFill: true }, // <-- Marcado para fondo amarillo
-    { labelText: "Ventana", labelCell: "G14", jsonKey: null, dataAnchor: "H14", dataMergeRange: "H14:I14", addYellowFill: true }  // <-- Marcado para fondo amarillo
+    { labelText: "Cable", labelCell: "B14", jsonKey: null, dataAnchor: "C14", dataMergeRange: "C14:E14", addYellowFill: true },
+    { labelText: "Ventana", labelCell: "G14", jsonKey: null, dataAnchor: "H14", dataMergeRange: "H14:I14", addYellowFill: true }
 ];
 
 const headersRow20 = {

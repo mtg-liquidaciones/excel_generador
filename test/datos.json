@@ -1,0 +1,165 @@
+{
+  "uri": "C:\\Users\\MAOC\\Desktop\\excel_generador\\test\\240304",
+  "projectDetails": {
+    "company": "MATYSGER",
+    "district": "MIRAFLORES",
+    "node": "ANGAMOS",
+    "projectName": "POLYROFF S.A.C",
+    "clientAddress": "AV.SANTA CRUZ N°387",
+    "city": "LIMA",
+    "code": "240304",
+    "startDate": "06/04/2024",
+    "endDate": "08/04/2024"
+  },
+  "services": [
+    {
+      "name": "Cables Aereo y Subterraneos",
+      "photos": [
+        {
+          "fileName": "1d8d90eb-18fb-4e56-b968-275170646416",
+          "comment": "Verificación de tensión del cable aéreo."
+        },
+        {
+          "fileName": "56c32add-d35a-479d-b183-2dd5a9d18b6f",
+          "comment": "Inspección de zanja para cableado subterráneo."
+        },
+        {
+          "fileName": "e1e55901-2260-42a6-899a-9a55a10e4391",
+          "comment": "Sellado de ducto finalizado."
+        }
+      ],
+      "folders": []
+    },
+    {
+      "name": "Empalmes",
+      "photos": [],
+      "folders": [
+        {
+          "name": "b1",
+          "photos": [
+            { "fileName": "d123d13", "comment": "Bandeja de empalme A." },
+            { "fileName": "df313421", "comment": "Fusión de hilos completa." },
+            { "fileName": "dsadsa", "comment": "Prueba de potencia óptica OK." },
+            { "fileName": "edqweqw", "comment": "Cierre de mufa hermético." },
+            { "fileName": "er1234", "comment": "Etiquetado de fibra." },
+            { "fileName": "rqwddqw", "comment": "Organización de pigtails." },
+            { "fileName": "rqwdqweq", "comment": "Limpieza final de área." }
+          ]
+        },
+        {
+          "name": "b2",
+          "photos": [
+            { "fileName": "4t53gre", "comment": "Bandeja de empalme B." },
+            { "fileName": "f453t564", "comment": "Hilos preparados para fusión." },
+            { "fileName": "fdsfds5", "comment": "Verificación con OTDR." },
+            { "fileName": "gf3rty", "comment": "Sangrado de cable principal." },
+            { "fileName": "rfe43456t", "comment": "Instalación de termocontraíbles." },
+            { "fileName": "t3gy54t", "comment": "Punto de empalme asegurado." },
+            { "fileName": "tg34ge4r", "comment": "Revisión de atenuación." },
+            { "fileName": "v34tgfd", "comment": "Mufa cerrada y asegurada." }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Entrega de Nodos",
+      "photos": [],
+      "folders": [
+        {
+          "name": "prueba",
+          "photos": [
+            { "fileName": "1", "comment": "Vista frontal del ODF." },
+            { "fileName": "2", "comment": "Conectorización del puerto 1." },
+            { "fileName": "3", "comment": "Etiquetado de patch panel." },
+            { "fileName": "4", "comment": "Cableado interno organizado." },
+            { "fileName": "5", "comment": "Puerta de rack cerrada." },
+            { "fileName": "6", "comment": "Pruebas de continuidad finalizadas." }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Manipulación de MUFA",
+      "photos": [
+        { "fileName": "1", "comment": "Apertura de mufa existente." },
+        { "fileName": "2", "comment": "Identificación de hilos a intervenir." },
+        { "fileName": "3", "comment": "Reorganización de bandejas." },
+        { "fileName": "4", "comment": "Limpieza de gel y residuos." },
+        { "fileName": "5", "comment": "Sellado provisional." },
+        { "fileName": "6", "comment": "Cierre final y prueba de hermeticidad." }
+      ],
+      "folders": []
+    },
+    {
+      "name": "OO.CC - CAMARAS",
+      "photos": [
+        { "fileName": "1", "comment": "Excavación de cámara tipo B." },
+        { "fileName": "2", "comment": "Instalación de base de concreto." },
+        { "fileName": "3", "comment": "Colocación de cuerpo de cámara." },
+        { "fileName": "4", "comment": "Instalación de marco y tapa." },
+        { "fileName": "5", "comment": "Nivelación de tapa con vereda." },
+        { "fileName": "6", "comment": "Limpieza interna de la cámara." },
+        { "fileName": "7", "comment": "Vista inicial de la ubicación." },
+        { "fileName": "8", "comment": "Medidas de seguridad implementadas." },
+        { "fileName": "9", "comment": "Relleno y compactación." },
+        { "fileName": "10", "comment": "Acabado final de superficie." },
+        { "fileName": "11", "comment": "Señalización de obra civil." },
+        { "fileName": "12", "comment": "Prueba de drenaje." },
+        { "fileName": "13", "comment": "Cámara finalizada - vista 1." },
+        { "fileName": "14", "comment": "Cámara finalizada - vista 2." },
+        { "fileName": "15", "comment": "Retiro de desmonte." }
+      ],
+      "folders": []
+    },
+    {
+      "name": "OO.CC - CANALIZADO",
+      "photos": [],
+      "folders": [
+        {
+          "name": "m1",
+          "photos": [
+            { "fileName": "1", "comment": "Trazado de ruta de canalización." },
+            { "fileName": "2", "comment": "Apertura de zanja, tramo 1." },
+            { "fileName": "3", "comment": "Instalación de ductos." },
+            { "fileName": "4", "comment": "Cama de arena." },
+            { "fileName": "5", "comment": "Colocación de cinta de señalización." },
+            { "fileName": "6", "comment": "Relleno y compactación inicial." }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OO.CC - POSTES",
+      "photos": [
+        { "fileName": "1", "comment": "Excavación para cimentación." },
+        { "fileName": "2", "comment": "Izaje del poste." },
+        { "fileName": "3", "comment": "Nivelación y aplomado." },
+        { "fileName": "4", "comment": "Vaciado de concreto en base." },
+        { "fileName": "5", "comment": "Instalación de anclajes." },
+        { "fileName": "6", "comment": "Poste instalado y asegurado." }
+      ],
+      "folders": []
+    },
+    {
+      "name": "Reservas Aereas",
+      "photos": [
+        { "fileName": "1", "comment": "Reserva en poste 01." },
+        { "fileName": "2", "comment": "Reserva en poste 02." },
+        { "fileName": "3", "comment": "Reserva en poste 03." },
+        { "fileName": "4", "comment": "Reserva en poste 04." },
+        { "fileName": "5", "comment": "Detalle de enrollado." },
+        { "fileName": "6", "comment": "Sujeción de la reserva." },
+        { "fileName": "7", "comment": "Vista general de reservas en tramo." },
+        { "fileName": "8", "comment": "Reserva en poste 08." },
+        { "fileName": "9", "comment": "Reserva en poste 09." },
+        { "fileName": "10", "comment": "Reserva en poste 10." },
+        { "fileName": "11", "comment": "Reserva en poste 11." },
+        { "fileName": "12", "comment": "Reserva en poste 12." },
+        { "fileName": "13", "comment": "Reserva en poste 13." },
+        { "fileName": "14", "comment": "Reserva en poste 14." },
+        { "fileName": "15", "comment": "Reserva final de tramo." }
+      ],
+      "folders": []
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-// [CODESENSEI] Versión refactorizada para crear todas las hojas de servicio, existan o no las carpetas.
+// [CODESENSEI] Versión final y corregida.
 
 import ExcelJS from 'exceljs';
 import path from 'path';
@@ -15,59 +15,59 @@ function sanitizeFileName(fileName) {
   return fileName.replace(/[^a-z0-9_.-]+/gi, '_');
 }
 
-async function generateFullExcelForPath(mainProjectFolder) {
-  logger.info(`Starting Excel generation for project in: ${mainProjectFolder}`);
+async function generateFullExcelForPath(requestBody) {
+  // [CODESENSEI] CORRECCIÓN CLAVE: Usamos 'uri' y lo renombramos a 'projectPath'.
+  const { uri: projectPath, projectDetails, services } = requestBody;
+  const generalData = projectDetails || {};
 
-  const mainDataJsonPath = path.join(mainProjectFolder, config.excel.NOMBRE_ARCHIVO_DATOS_PRINCIPAL);
-  let generalData = {};
-  try {
-    const fileContent = await fs.readFile(mainDataJsonPath, 'utf-8');
-    generalData = JSON.parse(fileContent);
-    logger.info(`Main datos.json loaded from ${mainDataJsonPath}.`);
-  } catch (error) {
-    logger.error(`Error loading or parsing ${mainDataJsonPath}: ${error.message}`, error);
+  logger.info(`Starting Excel generation for project in: ${projectPath}`);
+
+  if (!projectPath) {
+    throw new Error('projectPath is undefined after destructuring. Check the incoming JSON body for the "uri" key.');
   }
 
   const workbook = new ExcelJS.Workbook();
-  
-  // --- INICIO DE LA LÓGICA DE BATCH (se mantiene igual) ---
-  const allPossibleServices = Object.keys(config.excel.FOLDER_TO_TITLE_MAP);
+
   const batchOfComments = {};
-  for (const subfolderName of allPossibleServices) {
-    const commentsJsonPath = path.join(mainProjectFolder, subfolderName, config.excel.NOMBRE_ARCHIVO_COMENTARIOS);
-    try {
-      const commentsContent = await fs.readFile(commentsJsonPath, 'utf-8');
-      batchOfComments[subfolderName] = JSON.parse(commentsContent);
-    } catch (err) {
-      // Si el archivo de comentarios no existe, simplemente no lo añadimos al lote
-      if (err.code !== 'ENOENT') {
-        logger.warn(`Could not load or parse comments for '${subfolderName}'.`);
+  if (services && Array.isArray(services)) {
+    for (const service of services) {
+      const serviceName = service.name;
+      if (!serviceName) continue;
+      
+      batchOfComments[serviceName] = {};
+      if (service.photos && service.photos.length > 0) {
+        for (const photo of service.photos) {
+          batchOfComments[serviceName][photo.fileName] = photo.comment;
+        }
+      }
+      if (service.folders && service.folders.length > 0) {
+        for (const folder of service.folders) {
+          for (const photo of folder.photos) {
+            const uniquePhotoId = `${folder.name}/${photo.fileName}`;
+            batchOfComments[serviceName][uniquePhotoId] = photo.comment;
+          }
+        }
       }
     }
   }
-  
-  logger.info(`Sending a batch of comments from ${Object.keys(batchOfComments).length} subfolders to n8n.`);
+
+  logger.info(`Sending a batch of comments from ${Object.keys(batchOfComments).length} services to n8n.`);
   const allCorrectedComments = await correctAllCommentsInBatch(batchOfComments);
-  // --- FIN DE LA LÓGICA DE BATCH ---
-
-
-  // --- CREACIÓN DE HOJAS ---
+  
   logger.info("Creating 'Acta Resumen Pext' sheet...");
   const resumenSheet = workbook.addWorksheet("Acta Resumen Pext", { views: [{ showGridLines: false }] });
   await createSheetActaResumen(resumenSheet, generalData, config.excel.RUTA_LOGO_GTD);
   logger.info("'Acta Resumen Pext' created.");
 
-  // [CODESENSEI] INICIO DE LA LÓGICA MODIFICADA
-  // Iteramos sobre la lista DEFINIDA de servicios en la configuración, no sobre las carpetas que encontramos.
   logger.info("Creating conformity sheets for all defined services...");
+  const allPossibleServices = Object.keys(config.excel.FOLDER_TO_TITLE_MAP);
 
-  for (const subfolderName of allPossibleServices) {
-    const subfolderPath = path.join(mainProjectFolder, subfolderName);
-    const conformitySheetTitleTemplate = config.excel.FOLDER_TO_TITLE_MAP[subfolderName];
+  for (const serviceName of allPossibleServices) {
+    const conformitySheetTitleTemplate = config.excel.FOLDER_TO_TITLE_MAP[serviceName];
+    const serviceData = services.find(s => s.name === serviceName);
     
-    logger.info(`Processing sheet for service: ${subfolderName}`);
-
-    const sheetName = subfolderName.substring(0, 31);
+    logger.info(`Processing sheet for service: ${serviceName}`);
+    const sheetName = serviceName.substring(0, 31);
     const conformitySheet = workbook.addWorksheet(sheetName, { views: [{ showGridLines: false }] });
     
     const colWidths = config.excel.CONFORMIDAD_SHEET_CONFIG.anchos_columnas_char;
@@ -75,74 +75,61 @@ async function generateFullExcelForPath(mainProjectFolder) {
       Object.entries(colWidths).forEach(([col, width]) => conformitySheet.getColumn(col).width = width);
     }
 
-    let photosWithComments = [];
-    // [CODESENSEI] Verificamos si la carpeta para este servicio existe en el disco.
-    const folderExists = await fs.access(subfolderPath).then(() => true).catch(() => false);
-
-    if (folderExists) {
-      logger.info(`Folder '${subfolderName}' found. Populating with data...`);
-      // [CODESENSEI] Si la carpeta existe, usamos los comentarios (ya corregidos en lote) y buscamos las fotos.
-      const commentsToUse = allCorrectedComments[subfolderName] || {};
-      const photoKeys = Object.keys(commentsToUse);
+    let photosForExcel = [];
+    const correctedServiceComments = allCorrectedComments[serviceName] || {};
+    
+    if (serviceData) {
+      const allPhotosData = [];
+      // Fotos en la raíz
+      (serviceData.photos || []).forEach(p => allPhotosData.push({ ...p, subfolderName: null, serviceName }));
+      // Fotos en carpetas
+      (serviceData.folders || []).forEach(f => {
+        (f.photos || []).forEach(p => allPhotosData.push({ ...p, subfolderName: f.name, serviceName }));
+      });
       
-      if (photoKeys.length > 0) {
-        const filesInSubfolder = await fs.readdir(subfolderPath);
-        const filesInSubfolderLower = filesInSubfolder.map(f => f.toLowerCase());
-
-        for (const photoKeyStr of photoKeys) {
-          const commentText = commentsToUse[photoKeyStr] || "";
-          let foundPhotoPath = null;
-
-          for (const ext of config.excel.PHOTO_CONFIG.POSSIBLE_IMAGE_EXTENSIONS) {
-            const targetFileNameLower = `${photoKeyStr}${ext}`.toLowerCase();
-            const fileIndex = filesInSubfolderLower.indexOf(targetFileNameLower);
-
-            if (fileIndex !== -1) {
-              foundPhotoPath = path.join(subfolderPath, filesInSubfolder[fileIndex]);
-              break;
-            }
-          }
-          if (foundPhotoPath) {
-            photosWithComments.push({ path: foundPhotoPath, comment: commentText });
-          } else {
-            logger.warn(`Image matching key '${photoKeyStr}' not found in '${subfolderName}'.`);
-          }
+      for (const photoData of allPhotosData) {
+        const uniqueId = photoData.subfolderName ? `${photoData.subfolderName}/${photoData.fileName}` : photoData.fileName;
+        const correctedComment = correctedServiceComments[uniqueId] || photoData.comment;
+        const finalComment = photoData.subfolderName ? `${photoData.subfolderName} - ${correctedComment}` : correctedComment;
+        
+        const imagePath = photoData.subfolderName
+          ? path.join(projectPath, photoData.serviceName, photoData.subfolderName, `${photoData.fileName}.jpg`)
+          : path.join(projectPath, photoData.serviceName, `${photoData.fileName}.jpg`);
+        
+        const imageExists = await fs.access(imagePath).then(() => true).catch(() => false);
+        if (imageExists) {
+            photosForExcel.push({ path: imagePath, comment: finalComment });
+        } else {
+            logger.warn(`Image file not found at path: ${imagePath}`);
         }
       }
-    } else {
-      // [CODESENSEI] Si la carpeta no existe, el array 'photosWithComments' se queda vacío.
-      logger.warn(`Folder '${subfolderName}' not found. An empty template sheet will be created.`);
     }
-
-    // [CODESENSEI] Esta lógica ahora se ejecuta siempre, ya sea con datos o con 'photosWithComments' vacío.
-    const photosPerInstance = config.excel.PHOTO_CONFIG.PHOTOS_PER_INSTANCE_STRUCTURE;
-    const numInstancesRequired = photosWithComments.length > 0 ? Math.ceil(photosWithComments.length / photosPerInstance) : 1;
     
-    logger.info(`Total valid photos for '${subfolderName}': ${photosWithComments.length}. Template instances: ${numInstancesRequired}`);
+    const photosPerInstance = config.excel.PHOTO_CONFIG.PHOTOS_PER_INSTANCE_STRUCTURE;
+    const numInstancesRequired = photosForExcel.length > 0 ? Math.ceil(photosForExcel.length / photosPerInstance) : 1;
     
     for (let i = 0; i < numInstancesRequired; i++) {
       const rowOffset = i * config.excel.CONFORMIDAD_SHEET_CONFIG.filas_por_bloque_plantilla;
-      const photosForThisInstance = photosWithComments.slice(i * photosPerInstance, (i + 1) * photosPerInstance);
-      // [CODESENSEI] Llamamos a la función que dibuja la plantilla, incluso si no hay fotos.
+      const photosForThisInstance = photosForExcel.slice(i * photosPerInstance, (i + 1) * photosPerInstance);
       await createConformitySheetInstance(conformitySheet, rowOffset, generalData, conformitySheetTitleTemplate, photosForThisInstance);
     }
   }
-  // [CODESENSEI] FIN DE LA LÓGICA MODIFICADA
 
   logger.info("Creating 'Mediciones OTDR' sheet...");
   const otdrSheet = workbook.addWorksheet("Mediciones OTDR", { views: [{ showGridLines: false }] });
   await createSheetMedicionesOTDR(otdrSheet, generalData, config.excel.RUTA_LOGO_GTD);
   logger.info("'Mediciones OTDR' created.");
 
-  const projectCode = generalData["N° PROY/ COD: AX"];
+  const projectCode = generalData.code;
   let outputFileName;
   if (projectCode && projectCode !== "SIN_CODIGO_PROYECTO") {
     outputFileName = `${sanitizeFileName(projectCode)}-ACTA DE CONFORMIDAD.xlsx`;
   } else {
-    const projectFolderName = path.basename(mainProjectFolder);
+    const projectFolderName = path.basename(projectPath);
     outputFileName = `${sanitizeFileName(projectFolderName)}_Consolidado_Actas.xlsx`;
   }
-  const fullOutputFilePath = path.join(mainProjectFolder, outputFileName);
+  
+  const fullOutputFilePath = path.join(projectPath, outputFileName);
   await workbook.xlsx.writeFile(fullOutputFilePath);
   logger.info(`Excel file generated successfully at: ${fullOutputFilePath}`);
   return { success: true, message: "Excel generated successfully.", filePath: fullOutputFilePath };

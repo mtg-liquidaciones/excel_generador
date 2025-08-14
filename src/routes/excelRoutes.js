@@ -1,16 +1,14 @@
 // src/routes/excelRoutes.js
+// [CODESENSEI] Versión final compatible con la nueva estructura de JSON.
 
 import express from 'express';
 import fs from 'fs/promises';
 import { generateFullExcelForPath } from '../services/excelProcessingService.js';
 import config from '../config/index.js';
-import logger from '../utils/logger.js'; // <--- Importamos el logger real aquí
+import logger from '../utils/logger.js';
 
 const router = express.Router();
 
-/**
- * Custom TimeoutError class
- */
 class TimeoutError extends Error {
   constructor(message) {
     super(message);
@@ -18,13 +16,6 @@ class TimeoutError extends Error {
   }
 }
 
-/**
- * Wraps an async operation with a timeout.
- * @param {Promise<any>} promise - The promise to race against timeout.
- * @param {number} timeoutMs - Timeout in milliseconds.
- * @param {string} operationName - Name of the operation for logging.
- * @returns {Promise<any>} - The result of the original promise or throws TimeoutError.
- */
 function asyncOperationWithTimeout(promise, timeoutMs, operationName = "Async Operation") {
   let timeoutHandle;
   const timeoutPromise = new Promise((_, reject) => {
@@ -40,39 +31,30 @@ function asyncOperationWithTimeout(promise, timeoutMs, operationName = "Async Op
     });
 }
 
-// POST /api/excel/generar_excel
-router.post('/generar_excel', async (req, res) => {
-  logger.info(`POST /generar_excel request received from ${req.ip}`);
-
-  if (!req.body || typeof req.body !== 'object') {
-    logger.warn("Request body is not JSON or is missing.");
-    return res.status(400).json({ status: "error", message: "Request body must be JSON." });
-  }
-
-  const { ruta_proyecto: projectPath } = req.body;
-
-  if (!projectPath) {
-    logger.warn("'ruta_proyecto' not provided in JSON payload.");
-    return res.status(400).json({ status: "error", message: "'ruta_proyecto' is required." });
-  }
-
+router.post('/generar_excel', async (req, res, next) => {
   try {
+    logger.info(`POST /generar_excel request received from ${req.ip}`);
+    
+    // [CODESENSEI] Cambio 1: Ahora trabajamos con todo el cuerpo de la petición.
+    const requestBody = req.body;
+    const { uri: projectPath } = requestBody; // Usamos la clave "uri" que te envía la desarrolladora.
+
+    if (!projectPath) {
+      logger.warn("'uri' not provided in JSON payload.");
+      return res.status(400).json({ status: "error", message: "'uri' is required." });
+    }
+
     const stats = await fs.stat(projectPath);
     if (!stats.isDirectory()) {
-      logger.warn(`'ruta_proyecto' (${projectPath}) is not a valid directory.`);
+      logger.warn(`'uri' (${projectPath}) is not a valid directory.`);
       return res.status(404).json({ status: "error", message: `Project path is not a valid directory: ${projectPath}` });
     }
-  } catch (error) {
-    logger.warn(`Error accessing 'ruta_proyecto' (${projectPath}): ${error.message}`);
-    return res.status(404).json({ status: "error", message: `Project path does not exist or is not accessible: ${projectPath}` });
-  }
 
-  logger.info(`Project path received: ${projectPath}`);
+    logger.info(`Project path received: ${projectPath}`);
+    const generationTimeoutMs = config.app.GENERATION_TIMEOUT_SECONDS * 1000;
 
-  const generationTimeoutMs = config.app.GENERATION_TIMEOUT_SECONDS * 1000;
-
-  try {
-    const excelGenerationPromise = generateFullExcelForPath(projectPath);
+    // [CODESENSEI] Cambio 2: Pasamos el 'requestBody' COMPLETO a la función.
+    const excelGenerationPromise = generateFullExcelForPath(requestBody);
     const result = await asyncOperationWithTimeout(
       excelGenerationPromise,
       generationTimeoutMs,
@@ -86,24 +68,10 @@ router.post('/generar_excel', async (req, res) => {
         message: result.message,
         file_path: result.filePath,
       });
-    } else {
-      logger.error(`Excel generation failed or was partial for '${projectPath}': ${result.message}`);
-      return res.status(500).json({ status: "error", message: result.message || "Excel generation failed." });
     }
   } catch (error) {
-    if (error instanceof TimeoutError) {
-      logger.error(`Timeout (${generationTimeoutMs / 1000}s) reached during Excel generation for '${projectPath}'.`);
-      return res.status(504).json({
-        status: "error",
-        message: `Timeout: Excel generation exceeded ${generationTimeoutMs / 1000} seconds.`,
-      });
-    } else {
-      logger.error(`Unexpected error during Excel generation for '${projectPath}': ${error.message}`, error);
-      return res.status(500).json({
-        status: "error",
-        message: "An internal server error occurred during Excel generation.",
-      });
-    }
+    // [CODESENSEI] Pasamos cualquier error a nuestro manejador centralizado.
+    next(error);
   }
 });
 

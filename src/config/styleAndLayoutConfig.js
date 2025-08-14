@@ -19,10 +19,15 @@ const FOLDER_TO_TITLE_MAP = {
 };
 
 const MAIN_JSON_CELL_MAP_CONFORMIDAD = {
-  "Contratista": "E10", "Distrito": "E12", "Nodo": "E14",
-  "Nombre cliente / Proyecto": "H16", "Direccion Cliente": "E18",
-  "Ciudad": "T8", "N° PROY/ COD: AX": "T10",
-  "Fecha Inicio": "T12", "Fecha Término": "T14"
+  "company": "E10", 
+  "district": "E12", 
+  "node": "E14",
+  "projectName": "H16", 
+  "clientAddress": "E18",
+  "city": "T8", 
+  "code": "T10",
+  "startDate": "T12", 
+  "endDate": "T14"
 };
 
 // --- CONFIGURACIÓN DE FOTOS ---
